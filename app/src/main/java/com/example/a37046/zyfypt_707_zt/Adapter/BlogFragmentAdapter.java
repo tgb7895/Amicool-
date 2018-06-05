@@ -1,6 +1,7 @@
 package com.example.a37046.zyfypt_707_zt.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.a37046.zyfypt_707_zt.R;
+import com.example.a37046.zyfypt_707_zt.activities.ViewArticleActivity;
 import com.example.a37046.zyfypt_707_zt.bean.ArticleBean;
 import com.example.a37046.zyfypt_707_zt.common.Common;
 import com.squareup.picasso.Picasso;
@@ -58,7 +60,10 @@ public class BlogFragmentAdapter extends RecyclerView.Adapter<BlogFragmentAdapte
             public void onClick(View view) {
                 //取出当前item的id
                 int id=bean.getId();
-                Toast.makeText(context, ""+id, Toast.LENGTH_SHORT).show();
+
+                Intent intent=new Intent(context, ViewArticleActivity.class);
+                intent.putExtra("resid",bean.getId());
+                context.startActivity(intent);
             }
         });
 
