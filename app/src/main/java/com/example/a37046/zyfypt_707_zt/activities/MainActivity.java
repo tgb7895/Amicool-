@@ -44,8 +44,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentList = new ArrayList<>();
         fragmentList.add(new BlogFragment());
         fragmentList.add(new KeyNoteFragment());
-        fragmentList.add(new SampleFragment());
         fragmentList.add(new VideoFragment());
+        fragmentList.add(new SampleFragment());
     }
 
     private void initViewPager() {

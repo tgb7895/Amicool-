@@ -40,6 +40,7 @@ public class BlogFragmentAdapter extends RecyclerView.Adapter<BlogFragmentAdapte
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final ArticleBean  bean=list.get(position);
+
         if(bean==null){
             return;
         }
