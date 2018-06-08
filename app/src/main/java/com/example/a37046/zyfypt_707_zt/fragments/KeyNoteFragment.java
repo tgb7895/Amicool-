@@ -14,14 +14,14 @@ import android.widget.Toast;
 import com.example.a37046.zyfypt_707_zt.Adapter.KeyNoteFragmentApapter;
 import com.example.a37046.zyfypt_707_zt.BaseFragment.BaseFragment;
 import com.example.a37046.zyfypt_707_zt.R;
-import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
+import com.example.a37046.zyfypt_707_zt.bean.KeyNoteBean;
 import com.example.a37046.zyfypt_707_zt.iface.GetListener;
-import com.example.a37046.zyfypt_707_zt.model.GetModel;
+import com.example.a37046.zyfypt_707_zt.model.KeyNoteModel;
 
 import java.util.List;
 
 public class KeyNoteFragment extends BaseFragment {
-    private List<VideoBean> list;
+    private List<KeyNoteBean> list;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
     private KeyNoteFragmentApapter adapter;
@@ -29,9 +29,9 @@ public class KeyNoteFragment extends BaseFragment {
     private int lastVisibleItemPosition;//最后一条可见条目的位置
 
 
-    GetListener<VideoBean> listener= new GetListener<VideoBean>() {
+    GetListener<KeyNoteBean> listener= new GetListener<KeyNoteBean>() {
         @Override
-        public void onResponse(List<VideoBean> beanList) {
+        public void onResponse(List<KeyNoteBean> beanList) {
             if(page==1)
             {
                 list=beanList;
@@ -58,7 +58,7 @@ public class KeyNoteFragment extends BaseFragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRecyclerView(view);
-        GetModel model=new GetModel();
+        KeyNoteModel model=new KeyNoteModel();
         model.getResultList("tware",page,getSessionId(),listener);
     }
 
@@ -79,8 +79,8 @@ public class KeyNoteFragment extends BaseFragment {
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition + 1 == list.size()) {
                     page += 1;
                     //再次实例化ArticleModel，调用方法获取网络数据，请求新一页数据
-                    GetModel getModel = new GetModel();
-                    getModel.getResultList("tware", page, getSessionId(), listener);
+                    KeyNoteModel keyNoteModel = new KeyNoteModel();
+                    keyNoteModel.getResultList("tware", page, getSessionId(), listener);
                 }
             }
             @Override

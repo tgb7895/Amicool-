@@ -11,11 +11,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.activities.ViewTwareActivity;
-import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
+import com.example.a37046.zyfypt_707_zt.bean.KeyNoteBean;
 import com.example.a37046.zyfypt_707_zt.common.Common;
 import com.squareup.picasso.Picasso;
 
@@ -26,7 +25,7 @@ import butterknife.ButterKnife;
 
 public class KeyNoteFragmentApapter extends RecyclerView.Adapter<KeyNoteFragmentApapter.ViewHolder> {
 
-    private List<VideoBean> videoBeans;
+    private List<KeyNoteBean> keyNoteBeans;
     private Context context;
     private LayoutInflater layoutInflater;
 
@@ -36,9 +35,9 @@ public class KeyNoteFragmentApapter extends RecyclerView.Adapter<KeyNoteFragment
     }
 
     //自定义 设置数据list
-    public void setList(List<VideoBean> list)
+    public void setList(List<KeyNoteBean> list)
     {
-        this.videoBeans=list;
+        this.keyNoteBeans =list;
         notifyDataSetChanged();//通知RV刷新数据
     }
     @NonNull
@@ -50,24 +49,24 @@ public class KeyNoteFragmentApapter extends RecyclerView.Adapter<KeyNoteFragment
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final VideoBean videoBean = videoBeans.get(position);
+        final KeyNoteBean keyNoteBean = keyNoteBeans.get(position);
 
-        if (videoBean==null){
+        if (keyNoteBean ==null){
             return;
         }
         Picasso.with(context)
-                .load(Common.IMAGEURL+videoBean.getThumb())
+                .load(Common.IMAGEURL+ keyNoteBean.getThumb())
                 .placeholder(R.mipmap.ic_launcher)
                 .into(holder.img);
-        holder.Tvtime.setText(videoBean.getUpdate_time());
-        holder.Tvauthor.setText(videoBean.getAuthor());
-        holder.Tvtitle.setText(videoBean.getName());
+        holder.Tvtime.setText(keyNoteBean.getUpdate_time());
+        holder.Tvauthor.setText(keyNoteBean.getAuthor());
+        holder.Tvtitle.setText(keyNoteBean.getName());
 
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Bundle bundle = new Bundle();
-                bundle.putSerializable("video_bean",videoBean);
+                bundle.putSerializable("key_note_bean", keyNoteBean);
                 Intent intent=new Intent(context, ViewTwareActivity.class);
                 intent.putExtras(bundle);
                 context.startActivity(intent);
@@ -78,10 +77,10 @@ public class KeyNoteFragmentApapter extends RecyclerView.Adapter<KeyNoteFragment
 
     @Override
     public int getItemCount() {
-        if(videoBeans==null){
+        if(keyNoteBeans ==null){
             return 0;
         }
-        return videoBeans.size();
+        return keyNoteBeans.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

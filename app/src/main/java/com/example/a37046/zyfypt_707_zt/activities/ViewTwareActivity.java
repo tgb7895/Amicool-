@@ -11,14 +11,13 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.a37046.zyfypt_707_zt.R;
-import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
+import com.example.a37046.zyfypt_707_zt.bean.KeyNoteBean;
 import com.example.a37046.zyfypt_707_zt.callback.HttpCallBack;
 import com.example.a37046.zyfypt_707_zt.service.DownloadService;
 import com.joanzapata.pdfview.PDFView;
 import com.joanzapata.pdfview.listener.OnPageChangeListener;
 
 import java.io.File;
-import java.io.Serializable;
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -31,7 +30,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
 public class ViewTwareActivity extends AppCompatActivity implements OnPageChangeListener,EasyPermissions.PermissionCallbacks{
-    VideoBean videoBean;
+    KeyNoteBean keyNoteBean;
     private String name="";
     private String attach="";
     private PDFView pdfView;
@@ -48,8 +47,8 @@ public class ViewTwareActivity extends AppCompatActivity implements OnPageChange
 
         init();
 
-        attach=videoBean.getPdfattach();
-        name=videoBean.getName();
+        attach= keyNoteBean.getPdfattach();
+        name= keyNoteBean.getName();
         System.out.println("----pdf地址："+attach);
         System.out.println("----pdf完整地址："+BASEURL+"/Uploads/"+attach);
 
@@ -150,7 +149,7 @@ public class ViewTwareActivity extends AppCompatActivity implements OnPageChange
 
     public void getDataIntent(){
         Intent intent = getIntent();
-        videoBean=(VideoBean)intent.getSerializableExtra("video_bean");
+        keyNoteBean =(KeyNoteBean)intent.getSerializableExtra("key_note_bean");
     }
 
 

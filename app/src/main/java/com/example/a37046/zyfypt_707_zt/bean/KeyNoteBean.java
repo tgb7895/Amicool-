@@ -1,48 +1,35 @@
 package com.example.a37046.zyfypt_707_zt.bean;
 
-public class VideoBean {
+import java.io.Serializable;
+
+public class KeyNoteBean implements Serializable {
 
     /**
-     * id : 317
-     * name : 用户登录3-处理登录失败
-     * thumb : video/thumb/20171213/thumb_20171213012308_708323562.jpg
-     * thumbsize : 78K
-     * description : 用户登录功能的需求描述
-     （1）实现登录功能，给出信息提示。
-     （2）如果登录成功，需要在每个页面
-
-     显示当期登录用户的信息。
-     （3）如果登录失败，需要在页面重新
-
-     弹出登录模态框并显示错误信息。
-     （4）无论登录成功还是失败，都能够
-
-     回到当前页面，可能是首页、视频列
-
-     表页或者视频详情页等。
-     本功能有三部分视频构成，分别是基
-
-     本功能，处理登录成功的跳转，处理
-
-     登录失败的跳转。
-     * videopath : php/3.mp4
-     * specialid : 104
-     * specialname : PHP应用开发-宋晓慧
-     * srcsc : null
-     * srcscsize : null
-     * donesc : null
-     * donescsize : null
-     * technoid : 25
-     * technoname : PHP
-     * kcdm : drphpyykf
-     * kcmc : PHP应用开发
-     * sectionid : 0
-     * sectionname : null
-     * author : 宋晓慧
-     * userid : 22
-     * hits : 175
+     * id : 59
+     * name : 07_数据存储_数据库存储
+     * thumb : tware/thumb/20170524/thumb_20170524122735_807577029.png
+     * thumbsize : 649K
+     * description : 数据库存储
+     * ressrcid : 1
+     * ressrcname : 原创
+     * technoid : 17
+     * technoname : Android
+     * kcdm : drandroid
+     * kcmc : Android应用开发
+     * sectionid : 23
+     * sectionname : 07_数据存储_数据库
+     * specialid : 0
+     * specialname : null
+     * author : 王凯
+     * clang : 中文
+     * swfattach : null
+     * swfattachsize : null
+     * pdfattach : tware/pdfattach/20170524/20170524122736_810326265.pdf
+     * pdfattachsize : 784K
+     * userid : 102
+     * hits : 589
      * insert_time : null
-     * update_time : 2017-12-13 13:23:08
+     * update_time : 2017-05-24 12:27:36
      * check_userid : 1
      * checktime : null
      * checkstate : 1
@@ -55,20 +42,22 @@ public class VideoBean {
     private String thumb;
     private String thumbsize;
     private String description;
-    private String videopath;
-    private String specialid;
-    private String specialname;
-    private Object srcsc;
-    private Object srcscsize;
-    private Object donesc;
-    private Object donescsize;
+    private String ressrcid;
+    private String ressrcname;
     private String technoid;
     private String technoname;
     private String kcdm;
     private String kcmc;
     private String sectionid;
-    private Object sectionname;
+    private String sectionname;
+    private String specialid;
+    private Object specialname;
     private String author;
+    private String clang;
+    private Object swfattach;
+    private Object swfattachsize;
+    private String pdfattach;
+    private String pdfattachsize;
     private String userid;
     private String hits;
     private Object insert_time;
@@ -119,60 +108,20 @@ public class VideoBean {
         this.description = description;
     }
 
-    public String getVideopath() {
-        return videopath;
+    public String getRessrcid() {
+        return ressrcid;
     }
 
-    public void setVideopath(String videopath) {
-        this.videopath = videopath;
+    public void setRessrcid(String ressrcid) {
+        this.ressrcid = ressrcid;
     }
 
-    public String getSpecialid() {
-        return specialid;
+    public String getRessrcname() {
+        return ressrcname;
     }
 
-    public void setSpecialid(String specialid) {
-        this.specialid = specialid;
-    }
-
-    public String getSpecialname() {
-        return specialname;
-    }
-
-    public void setSpecialname(String specialname) {
-        this.specialname = specialname;
-    }
-
-    public Object getSrcsc() {
-        return srcsc;
-    }
-
-    public void setSrcsc(Object srcsc) {
-        this.srcsc = srcsc;
-    }
-
-    public Object getSrcscsize() {
-        return srcscsize;
-    }
-
-    public void setSrcscsize(Object srcscsize) {
-        this.srcscsize = srcscsize;
-    }
-
-    public Object getDonesc() {
-        return donesc;
-    }
-
-    public void setDonesc(Object donesc) {
-        this.donesc = donesc;
-    }
-
-    public Object getDonescsize() {
-        return donescsize;
-    }
-
-    public void setDonescsize(Object donescsize) {
-        this.donescsize = donescsize;
+    public void setRessrcname(String ressrcname) {
+        this.ressrcname = ressrcname;
     }
 
     public String getTechnoid() {
@@ -215,12 +164,28 @@ public class VideoBean {
         this.sectionid = sectionid;
     }
 
-    public Object getSectionname() {
+    public String getSectionname() {
         return sectionname;
     }
 
-    public void setSectionname(Object sectionname) {
+    public void setSectionname(String sectionname) {
         this.sectionname = sectionname;
+    }
+
+    public String getSpecialid() {
+        return specialid;
+    }
+
+    public void setSpecialid(String specialid) {
+        this.specialid = specialid;
+    }
+
+    public Object getSpecialname() {
+        return specialname;
+    }
+
+    public void setSpecialname(Object specialname) {
+        this.specialname = specialname;
     }
 
     public String getAuthor() {
@@ -229,6 +194,46 @@ public class VideoBean {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public String getClang() {
+        return clang;
+    }
+
+    public void setClang(String clang) {
+        this.clang = clang;
+    }
+
+    public Object getSwfattach() {
+        return swfattach;
+    }
+
+    public void setSwfattach(Object swfattach) {
+        this.swfattach = swfattach;
+    }
+
+    public Object getSwfattachsize() {
+        return swfattachsize;
+    }
+
+    public void setSwfattachsize(Object swfattachsize) {
+        this.swfattachsize = swfattachsize;
+    }
+
+    public String getPdfattach() {
+        return pdfattach;
+    }
+
+    public void setPdfattach(String pdfattach) {
+        this.pdfattach = pdfattach;
+    }
+
+    public String getPdfattachsize() {
+        return pdfattachsize;
+    }
+
+    public void setPdfattachsize(String pdfattachsize) {
+        this.pdfattachsize = pdfattachsize;
     }
 
     public String getUserid() {

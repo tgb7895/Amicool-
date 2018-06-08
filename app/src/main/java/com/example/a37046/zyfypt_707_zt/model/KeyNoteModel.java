@@ -1,10 +1,10 @@
 package com.example.a37046.zyfypt_707_zt.model;
 
-import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
+import com.example.a37046.zyfypt_707_zt.bean.KeyNoteBean;
 import com.example.a37046.zyfypt_707_zt.common.Common;
 import com.example.a37046.zyfypt_707_zt.iface.GetListener;
 import com.example.a37046.zyfypt_707_zt.iface.Getiface;
-import com.example.a37046.zyfypt_707_zt.service.VideoService;
+import com.example.a37046.zyfypt_707_zt.service.KeyNoteService;
 
 import java.util.List;
 
@@ -14,11 +14,11 @@ import retrofit2.Response;
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
-public class GetModel implements Getiface<GetListener<VideoBean>>{
+public class KeyNoteModel implements Getiface<GetListener<KeyNoteBean>>{
     private Retrofit retrofit;
 
 
-    public GetModel() {
+    public KeyNoteModel() {
         retrofit = new Retrofit.Builder()
                 .baseUrl(Common.BASEURL)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -26,13 +26,13 @@ public class GetModel implements Getiface<GetListener<VideoBean>>{
     }
 
     @Override
-    public void getResultList(String mod, int page, String sessionID, final GetListener<VideoBean> listener) {
-        VideoService videoService = retrofit.create(VideoService.class);
-        Call<List<VideoBean>> call = videoService.getArticleList(mod, page, sessionID);
+    public void getResultList(String mod, int page, String sessionID, final GetListener<KeyNoteBean> listener) {
+        KeyNoteService keyNoteService = retrofit.create(KeyNoteService.class);
+        Call<List<KeyNoteBean>> call = keyNoteService.getArticleList(mod, page, sessionID);
 
-        call.enqueue(new Callback<List<VideoBean>>() {
+        call.enqueue(new Callback<List<KeyNoteBean>>() {
             @Override
-            public void onResponse(Call<List<VideoBean>> call, Response<List<VideoBean>> response) {
+            public void onResponse(Call<List<KeyNoteBean>> call, Response<List<KeyNoteBean>> response) {
                 if(response.isSuccessful() && response!=null)
                 {  listener.onResponse(response.body());
                 }
@@ -42,7 +42,7 @@ public class GetModel implements Getiface<GetListener<VideoBean>>{
             }
 
             @Override
-            public void onFailure(Call<List<VideoBean>> call, Throwable t) {
+            public void onFailure(Call<List<KeyNoteBean>> call, Throwable t) {
                 listener.onFail(t.toString());
             }
         });
