@@ -20,5 +20,6 @@ public class NewVideoFragment extends BaseFragment{
     @Override//生命周期方法，View创建完成
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
     }
 }

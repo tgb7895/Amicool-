@@ -1,6 +1,8 @@
 package com.example.a37046.zyfypt_707_zt.bean;
 
-public class VideoBean {
+import java.io.Serializable;
+
+public class VideoBean implements Serializable {
 
     /**
      * id : 59
