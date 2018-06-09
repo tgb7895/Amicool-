@@ -27,7 +27,8 @@
         <activity android:name=".activities.ViewTwareActivity" />
         <activity android:name=".activities.ViewVideoActivity" />
         <activity android:name=".activities.ViewTCaseActivity" />
-        <activity android:name=".activities.ViewItemActivity"></activity>
+        <activity android:name=".activities.ViewItemActivity" />
+        <activity android:name=".activities.CollectActivity"></activity>
     </application>
 
 </manifest>
