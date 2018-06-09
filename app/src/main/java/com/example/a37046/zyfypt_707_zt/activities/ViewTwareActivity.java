@@ -1,18 +1,27 @@
 package com.example.a37046.zyfypt_707_zt.activities;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Environment;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.view.menu.ActionMenuItemView;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.bean.KeyNoteBean;
 import com.example.a37046.zyfypt_707_zt.callback.HttpCallBack;
+import com.example.a37046.zyfypt_707_zt.iface.CollectListener;
+import com.example.a37046.zyfypt_707_zt.model.CollectModel;
+import com.example.a37046.zyfypt_707_zt.model.ConcernModel;
 import com.example.a37046.zyfypt_707_zt.service.DownloadService;
 import com.joanzapata.pdfview.PDFView;
 import com.joanzapata.pdfview.listener.OnPageChangeListener;
@@ -36,25 +45,144 @@ public class ViewTwareActivity extends AppCompatActivity implements OnPageChange
     private PDFView pdfView;
     private TextView tvinfo,tvpage;
 
+
+    /**
+     * 简单存储
+     */
+    private SharedPreferences sp;
+
+    private int resid;
+    /**
+     * 收藏标志
+     */
+    private Boolean flagcollect = false;
+    /**
+     * 收藏model
+     */
+    private CollectModel collectmodel;
+
+
+    CollectListener listener = new CollectListener() {
+        @SuppressLint("RestrictedApi")
+        @Override
+        public void onResponse(String msg) {
+            //获取菜单视图
+            ActionMenuItemView item = findViewById(R.id.menucollect);
+            //根据mode中response返回的字符串区分返回结果
+            switch (msg) {
+                case "2":
+                    System.out.println("----收藏成功");
+                    flagcollect = true;
+                    item.setTitle("取消收藏");
+                    break;
+                case "1":
+                    System.out.println("----收藏失败");
+                    break;
+                case "4":
+                    System.out.println("----取消收藏成功");
+                    flagcollect = false;
+                    item.setTitle("收藏");
+                    break;
+                case "3":
+                    System.out.println("----取消收藏失败");
+                    break;
+                case "5":
+                    System.out.println("----已收藏");
+                    flagcollect = true;
+                    item.setTitle("取消收藏");
+                    break;
+                case "6":
+                    System.out.println("----未收藏");
+                    flagcollect = false;
+                    item.setTitle("收藏");
+                    break;
+                default:
+                    Toast.makeText(ViewTwareActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        @Override
+        public void onFail(String msg) {
+            Toast.makeText(ViewTwareActivity.this, msg, Toast.LENGTH_SHORT).show();
+        }
+    };
+
+    private String sessionID = "";
+
     private String BASEURL ="http://amicool.neusoft.edu.cn/";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_tware);
+
+        sp = getSharedPreferences("login", MODE_PRIVATE);
+        readSP();//读取sessionid
         applyPermissions();//申请权限
         getDataIntent();
+        resid=Integer.parseInt(keyNoteBean.getId());
         System.out.println("----查看课件详情");
 
         init();
 
         attach= keyNoteBean.getPdfattach();
         name= keyNoteBean.getName();
-        System.out.println("----pdf地址："+attach);
-        System.out.println("----pdf完整地址："+BASEURL+"/Uploads/"+attach);
+     //   System.out.println("----pdf地址："+attach);
+    //    System.out.println("----pdf完整地址："+BASEURL+"/Uploads/"+attach);
 
         downloadfile();//下载文件
 
     }
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //加载菜单布局
+        getMenuInflater().inflate(R.menu.menucollect, menu);
+        //实例化对象
+        collectmodel = new CollectModel();
+        //判断是否收藏
+        collectmodel.exist("tware", resid, sessionID, listener);
+
+
+        return true;
+    }
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.menucollect:
+                //如果已收藏，则调用取消收藏
+                if (flagcollect)
+                {
+                    System.out.println("----准备取消收藏");
+                    collectmodel.uncollect("tware", resid, sessionID, listener);
+                } else//如果未收藏，则调用收藏
+                {
+                    System.out.println("----准备收藏");
+                    collectmodel.collect("tware", resid, sessionID, listener);
+                }
+                break;
+            case R.id.menufocus:
+//                if(flagfocus)//如果已关注，则调用取消关注
+//                {
+//                    System.out.println("----准备取消关注");
+//                    concernModel.unconcern("article", articleBean.getUserid(), sessionID, mlistener);
+//                }
+//                else//如果未关注，则调用关注
+//                {
+//                    System.out.println("----准备关注");
+//                    concernModel.concern("article", articleBean.getUserid(), sessionID, mlistener);
+//                }
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+
+    private void readSP() {
+        sessionID = sp.getString("sessionID", null);
+    }
+
+
 
     private void init() {
         tvinfo=(TextView)findViewById(R.id.textView10);
