@@ -14,6 +14,7 @@ import com.example.a37046.zyfypt_707_zt.BaseFragment.BaseFragment;
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.activities.CollectActivity;
 import com.example.a37046.zyfypt_707_zt.activities.LoginActivity;
+import com.example.a37046.zyfypt_707_zt.activities.MyFocusListActivity;
 import com.example.a37046.zyfypt_707_zt.common.Common;
 import com.example.a37046.zyfypt_707_zt.service.LogoutService;
 
@@ -30,6 +31,7 @@ public class MyDataFragment extends BaseFragment {
 
 
     Button collect;
+    Button gz;
     Button exit;
     @Nullable
     @Override //生命周期方法，创建View
@@ -41,7 +43,7 @@ public class MyDataFragment extends BaseFragment {
         super.onViewCreated(view, savedInstanceState);
         collect=view.findViewById(R.id.fragment_mydata_col);
         exit=view.findViewById(R.id.fragment_mydata_exit);
-
+        gz=view.findViewById(R.id.fragment_mydata_gz);
         loaddatas();
 
     }
@@ -85,6 +87,13 @@ public class MyDataFragment extends BaseFragment {
 
             }
 
+        });
+        gz.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent=new Intent(context, MyFocusListActivity.class);
+                getActivity().startActivity(intent);
+            }
         });
     }
 
