@@ -2,8 +2,8 @@ package com.example.a37046.zyfypt_707_zt.activities;
 
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
-import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
 import android.support.v7.view.menu.ActionMenuItemView;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,9 +18,8 @@ import com.example.a37046.zyfypt_707_zt.model.CollectModel;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class ViewArticleActivity extends AppCompatActivity {
-
-    @BindView(R.id.activity_view_article_web_view)
+public class ViewTCaseActivity extends AppCompatActivity {
+    @BindView(R.id.activity_view_tacse_web_view)
     WebView webView;
 
     private int resid;
@@ -76,26 +75,26 @@ public class ViewArticleActivity extends AppCompatActivity {
                     item.setTitle("收藏");
                     break;
                 default:
-                    Toast.makeText(ViewArticleActivity.this, msg, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ViewTCaseActivity.this, msg, Toast.LENGTH_SHORT).show();
             }
         }
 
         @Override
         public void onFail(String msg) {
-            Toast.makeText(ViewArticleActivity.this, msg, Toast.LENGTH_SHORT).show();
+            Toast.makeText(ViewTCaseActivity.this, msg, Toast.LENGTH_SHORT).show();
         }
     };
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_view_article);
+        setContentView(R.layout.activity_view_tcase);
         ButterKnife.bind(this);
 
         resid = getIntent().getIntExtra("resid", 1);
 
 
-        webView.loadUrl(Common.ARTICLEURL + resid);
+        webView.loadUrl(Common.TCASE + resid);
         sp = getSharedPreferences("login", MODE_PRIVATE);
         readSP();//读取sessionid
 
@@ -140,12 +139,11 @@ public class ViewArticleActivity extends AppCompatActivity {
 //                {
 //                    System.out.println("----准备关注");
 //                }
-                Toast.makeText(ViewArticleActivity.this, "未完成", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ViewTCaseActivity.this, "未完成", Toast.LENGTH_SHORT).show();
                 break;
             default:
                 break;
         }
         return super.onOptionsItemSelected(item);
     }
-
 }

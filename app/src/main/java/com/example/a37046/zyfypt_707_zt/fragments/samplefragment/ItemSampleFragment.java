@@ -10,27 +10,30 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
+import com.example.a37046.zyfypt_707_zt.Adapter.SampleFragmentAdapter;
 import com.example.a37046.zyfypt_707_zt.Adapter.VideoFragmentAdapter;
 import com.example.a37046.zyfypt_707_zt.BaseFragment.BaseFragment;
 import com.example.a37046.zyfypt_707_zt.R;
+import com.example.a37046.zyfypt_707_zt.bean.SampleBean;
 import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
 import com.example.a37046.zyfypt_707_zt.iface.GetListener;
+import com.example.a37046.zyfypt_707_zt.model.SampleModel;
 import com.example.a37046.zyfypt_707_zt.model.VideoModel;
 
 import java.util.List;
 
 public class ItemSampleFragment extends BaseFragment{
-    private List<VideoBean> list;
+    private List<SampleBean> list;
     private RecyclerView recyclerView;
     private LinearLayoutManager layoutManager;
-    private VideoFragmentAdapter adapter;
+    private SampleFragmentAdapter adapter;
     private int page=1; // 代表页数，并初始化为1，代表第1页。
     private int lastVisibleItemPosition;//最后一条可见条目的位置
 
 
-    private GetListener<VideoBean> listener=new GetListener<VideoBean>() {
+    private GetListener<SampleBean> listener=new GetListener<SampleBean>() {
         @Override
-        public void onResponse(List<VideoBean> beanList) {
+        public void onResponse(List<SampleBean> beanList) {
             if(page==1)
             {
                 list=beanList;
@@ -57,8 +60,8 @@ public class ItemSampleFragment extends BaseFragment{
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         initRecyclerView(view);
-        VideoModel videoModel=new VideoModel();
-        videoModel.getResultList("project",page,getSessionId(), listener);
+        SampleModel sampleModele=new SampleModel();
+        sampleModele.getResultList("project",page,getSessionId(), listener);
     }
 
     private void initRecyclerView(View view) {
@@ -68,7 +71,7 @@ public class ItemSampleFragment extends BaseFragment{
         //每个item如果是确定高度，设置此项提高性能
         recyclerView.setHasFixedSize(true);
         //实例化适配器
-        adapter=new VideoFragmentAdapter(context);
+        adapter=new SampleFragmentAdapter(context);
         recyclerView.setAdapter(adapter);
         //列表滚动
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -78,8 +81,8 @@ public class ItemSampleFragment extends BaseFragment{
                 if (newState == RecyclerView.SCROLL_STATE_IDLE && lastVisibleItemPosition + 1 == list.size()) {
                     page += 1;
                     //再次实例化ArticleModel，调用方法获取网络数据，请求新一页数据
-                    VideoModel blogModel = new VideoModel();
-                    blogModel.getResultList("video", page, getSessionId(), listener);
+                    SampleModel sampleModele=new SampleModel();
+                    sampleModele.getResultList("project",page,getSessionId(), listener);
                 }
             }
             @Override
@@ -90,5 +93,4 @@ public class ItemSampleFragment extends BaseFragment{
         });
 
     }
-
 }

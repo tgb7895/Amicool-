@@ -4,4 +4,5 @@ public class Common {
     public static String BASEURL="http://amicool.neusoft.edu.cn/";
     public static String IMAGEURL="http://amicool.neusoft.edu.cn/Uploads/";
     public static String ARTICLEURL="http://amicool.neusoft.edu.cn/article.php/show/index/id/";
+    public static String TCASE="http://amicool.neusoft.edu.cn/tcase.php/show/index/id/";
 }
