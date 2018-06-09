@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.activities.ViewArticleActivity;
+import com.example.a37046.zyfypt_707_zt.activities.ViewItemActivity;
 import com.example.a37046.zyfypt_707_zt.activities.ViewTCaseActivity;
 import com.example.a37046.zyfypt_707_zt.activities.ViewTwareActivity;
 import com.example.a37046.zyfypt_707_zt.bean.KeyNoteBean;
@@ -30,10 +31,11 @@ public class SampleFragmentAdapter extends RecyclerView.Adapter<SampleFragmentAd
     private List<SampleBean> sampleBeanList;
     private Context context;
     private LayoutInflater layoutInflater;
-
-    public SampleFragmentAdapter(Context context) {
+    private int flag;//判断案例和项目
+    public SampleFragmentAdapter(Context context,int n) {
         this.context = context;
         layoutInflater=LayoutInflater.from(context);
+        this.flag=n;
     }
 
     //自定义 设置数据list
@@ -70,7 +72,14 @@ public class SampleFragmentAdapter extends RecyclerView.Adapter<SampleFragmentAd
                 //取出当前item的id
                 String id = sampleBean.getId();
                 int ids=Integer.parseInt(id);
-                Intent intent=new Intent(context, ViewTCaseActivity.class);
+
+                Intent intent=null;
+                if(flag==0) {
+                    intent=new Intent(context, ViewTCaseActivity.class);
+                }
+                if(flag==1) {
+                    intent=new Intent(context, ViewItemActivity.class);
+                }
                 intent.putExtra("resid",ids);
                 context.startActivity(intent);
             }

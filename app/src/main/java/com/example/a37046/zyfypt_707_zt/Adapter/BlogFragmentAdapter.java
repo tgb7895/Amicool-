@@ -2,6 +2,7 @@ package com.example.a37046.zyfypt_707_zt.Adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -64,7 +65,11 @@ public class BlogFragmentAdapter extends RecyclerView.Adapter<BlogFragmentAdapte
 
                 Intent intent=new Intent(context, ViewArticleActivity.class);
                 intent.putExtra("resid",bean.getId());
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("artic",bean);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
+
             }
         });
 

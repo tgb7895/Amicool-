@@ -27,6 +27,11 @@
         android:icon="@drawable/ic_sample"
         android:title="案例"
         app:showAsAction="always" />
-
+    <item
+        android:id="@+id/mydata"
+        android:enabled="true"
+        android:icon="@drawable/ic_mydata"
+        android:title="案例"
+        app:showAsAction="always" />
 
 </menu>

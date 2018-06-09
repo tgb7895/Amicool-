@@ -1,6 +1,8 @@
 package com.example.a37046.zyfypt_707_zt.bean;
 
-public class ArticleBean {
+import java.io.Serializable;
+
+public class ArticleBean implements Serializable {
     private int id;
     private String name;
     private String thumb;

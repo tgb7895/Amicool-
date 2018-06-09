@@ -72,7 +72,7 @@ public class CaseSampleFragment extends BaseFragment{
         //每个item如果是确定高度，设置此项提高性能
         recyclerView.setHasFixedSize(true);
         //实例化适配器
-        adapter=new SampleFragmentAdapter(context);
+        adapter=new SampleFragmentAdapter(context,0);
         recyclerView.setAdapter(adapter);
         //列表滚动
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

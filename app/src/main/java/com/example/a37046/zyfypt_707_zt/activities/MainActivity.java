@@ -15,6 +15,7 @@ import com.example.a37046.zyfypt_707_zt.BaseFragment.BottomNavigationViewHelper;
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.fragments.BlogFragment;
 import com.example.a37046.zyfypt_707_zt.fragments.KeyNoteFragment;
+import com.example.a37046.zyfypt_707_zt.fragments.MyDataFragment;
 import com.example.a37046.zyfypt_707_zt.fragments.SampleFragment;
 import com.example.a37046.zyfypt_707_zt.fragments.VideoFragment;
 
@@ -46,6 +47,8 @@ public class MainActivity extends AppCompatActivity {
         fragmentList.add(new KeyNoteFragment());
         fragmentList.add(new VideoFragment());
         fragmentList.add(new SampleFragment());
+        fragmentList.add(new MyDataFragment());
+
     }
 
     private void initViewPager() {
@@ -87,6 +90,9 @@ public class MainActivity extends AppCompatActivity {
                     case 3:
                         navigationView.setSelectedItemId(R.id.sample);
                         break;
+                    case 4:
+                        navigationView.setSelectedItemId(R.id.mydata);
+                        break;
                     default:
                         break;
                 }
@@ -118,6 +124,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.sample:
                         id = 3;
+                        break;
+                    case R.id.mydata:
+                        id = 4;
                         break;
                     default:
                         break;

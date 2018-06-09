@@ -111,7 +111,7 @@ public class ViewTCaseActivity extends AppCompatActivity {
         //实例化对象
         collectmodel = new CollectModel();
         //判断是否收藏
-        collectmodel.exist("article", resid, sessionID, listener);
+        collectmodel.exist("tcase", resid, sessionID, listener);
         return true;
     }
 
@@ -123,11 +123,11 @@ public class ViewTCaseActivity extends AppCompatActivity {
                 if (flagcollect)
                 {
                     System.out.println("----准备取消收藏");
-                    collectmodel.uncollect("article", resid, sessionID, listener);
+                    collectmodel.uncollect("tcase", resid, sessionID, listener);
                 } else//如果未收藏，则调用收藏
                 {
                     System.out.println("----准备收藏");
-                    collectmodel.collect("article", resid, sessionID, listener);
+                    collectmodel.collect("tcase", resid, sessionID, listener);
                 }
                 break;
             case R.id.menufocus:
