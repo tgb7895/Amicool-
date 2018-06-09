@@ -199,6 +199,7 @@ public class CollectFragment extends BaseFragment{
         //创建Adaper
         mCSampleAdapter =new CSampleAdapter(context);
         mCSampleAdapter.setList(mSampleList);
+        mCSampleAdapter.setFlags(2);
         //绑定RecyclerView和adapter
         recyclerView.setAdapter(mCSampleAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
@@ -233,6 +234,7 @@ public class CollectFragment extends BaseFragment{
         //创建Adaper
         mCSampleAdapter =new CSampleAdapter(context);
         mCSampleAdapter.setList(mSampleList);
+        mCSampleAdapter.setFlags(1);
         //绑定RecyclerView和adapter
         recyclerView.setAdapter(mCSampleAdapter);
         recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {

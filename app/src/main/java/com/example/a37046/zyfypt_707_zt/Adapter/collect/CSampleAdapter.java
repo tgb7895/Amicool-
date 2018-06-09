@@ -12,6 +12,8 @@ import android.widget.Toast;
 
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.activities.ViewArticleActivity;
+import com.example.a37046.zyfypt_707_zt.activities.ViewItemActivity;
+import com.example.a37046.zyfypt_707_zt.activities.ViewTCaseActivity;
 import com.example.a37046.zyfypt_707_zt.bean.CollectBean;
 import com.example.a37046.zyfypt_707_zt.bean.SampleBean;
 import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
@@ -24,6 +26,10 @@ public class CSampleAdapter extends RecyclerView.Adapter {
     private LayoutInflater layoutInflater;//动态加载布局
     private List<CollectBean<SampleBean>> list;//保存要显示的数据
 
+    private int flags;
+    public void setFlags(int flags){
+        this.flags=flags;
+    }
 
     //1自定义：构造方法，传进上下文
     public CSampleAdapter(Context context) {
@@ -60,7 +66,7 @@ public class CSampleAdapter extends RecyclerView.Adapter {
     //5重写：给ViewHolder中的控件填充值，设置监听
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        SampleBean sampleBean = list.get(position).getBean();
+        final SampleBean sampleBean = list.get(position).getBean();
         if (sampleBean == null)
             return;
         final ViewHolder viewHolder = (ViewHolder) holder;
@@ -78,15 +84,18 @@ public class CSampleAdapter extends RecyclerView.Adapter {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //获取当前条目信息，如id
-                int id = list.get(position).getId();
-                Toast.makeText(context, "" + id, Toast.LENGTH_SHORT).show();
                 //实际中，点击后打开新窗口做其他操作
-                Intent intent = new Intent(context, ViewArticleActivity.class);
-                intent.putExtra("resid", list.get(position).getId());
-                intent.putExtra("userid", list.get(position).getUserid());
-                context.startActivity(intent);
+                Intent intent=null;
+                if(flags==1) {
+                     intent = new Intent(context, ViewTCaseActivity.class);
+                }
+                if(flags==2) {
+                     intent = new Intent(context, ViewItemActivity.class);
+                }
 
+                int i = Integer.parseInt(sampleBean.getId());
+                intent.putExtra("resid", i);
+                context.startActivity(intent);
             }
         });
     }

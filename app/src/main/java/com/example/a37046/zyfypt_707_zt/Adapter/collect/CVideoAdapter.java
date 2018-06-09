@@ -2,6 +2,7 @@ package com.example.a37046.zyfypt_707_zt.Adapter.collect;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.activities.ViewArticleActivity;
+import com.example.a37046.zyfypt_707_zt.activities.ViewVideoActivity;
 import com.example.a37046.zyfypt_707_zt.bean.CollectBean;
 import com.example.a37046.zyfypt_707_zt.bean.KeyNoteBean;
 import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
@@ -60,7 +62,7 @@ public class CVideoAdapter extends RecyclerView.Adapter {
     //5重写：给ViewHolder中的控件填充值，设置监听
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        VideoBean videoBean = list.get(position).getBean();
+        final VideoBean videoBean = list.get(position).getBean();
         if (videoBean == null)
             return;
         final ViewHolder viewHolder = (ViewHolder) holder;
@@ -77,14 +79,13 @@ public class CVideoAdapter extends RecyclerView.Adapter {
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-                //获取当前条目信息，如id
-                int id = list.get(position).getId();
-                Toast.makeText(context, "" + id, Toast.LENGTH_SHORT).show();
+            public void onClick(View view) { ;
                 //实际中，点击后打开新窗口做其他操作
-                Intent intent = new Intent(context, ViewArticleActivity.class);
-                intent.putExtra("resid", list.get(position).getId());
-                intent.putExtra("userid", list.get(position).getUserid());
+                Intent intent = new Intent(context, ViewVideoActivity.class);
+                intent.putExtra("resid", videoBean.getId());
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("video",videoBean);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
 
             }

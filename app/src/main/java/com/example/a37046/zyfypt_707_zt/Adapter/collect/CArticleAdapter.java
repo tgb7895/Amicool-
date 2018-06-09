@@ -2,6 +2,7 @@ package com.example.a37046.zyfypt_707_zt.Adapter.collect;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -59,7 +60,7 @@ public class CArticleAdapter extends RecyclerView.Adapter {
     //5重写：给ViewHolder中的控件填充值，设置监听
     @Override
     public void onBindViewHolder(RecyclerView.ViewHolder holder, final int position) {
-        ArticleBean articleBean = list.get(position).getBean();
+        final ArticleBean articleBean = list.get(position).getBean();
         if (articleBean == null)
             return;
         final ViewHolder viewHolder = (ViewHolder) holder;
@@ -77,13 +78,11 @@ public class CArticleAdapter extends RecyclerView.Adapter {
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                //获取当前条目信息，如id
-                int id = list.get(position).getId();
-                Toast.makeText(context, "" + id, Toast.LENGTH_SHORT).show();
-                //实际中，点击后打开新窗口做其他操作
                 Intent intent = new Intent(context, ViewArticleActivity.class);
-                intent.putExtra("resid", list.get(position).getId());
-                intent.putExtra("userid", list.get(position).getUserid());
+                intent.putExtra("resid",articleBean.getId());
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("artic",articleBean);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
 
             }
