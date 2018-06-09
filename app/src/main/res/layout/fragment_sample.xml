@@ -3,9 +3,15 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/textView7"
+    <com.example.a37046.zyfypt_707_zt.fragments.videofragment.PagerSlidingTabStrip
+        android:id="@+id/fragment_sample_strip"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="案例" />
+        android:layout_height="wrap_content">
+
+    </com.example.a37046.zyfypt_707_zt.fragments.videofragment.PagerSlidingTabStrip>
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/fragment_sample_view_pager"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
 </LinearLayout>

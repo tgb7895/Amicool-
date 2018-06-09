@@ -2,49 +2,34 @@ package com.example.a37046.zyfypt_707_zt.bean;
 
 import java.io.Serializable;
 
-public class VideoBean implements Serializable {
+public class SampleBean implements Serializable {
 
     /**
-     * id : 317
-     * name : 用户登录3-处理登录失败
-     * thumb : video/thumb/20171213/thumb_20171213012308_708323562.jpg
-     * thumbsize : 78K
-     * description : 用户登录功能的需求描述
-     （1）实现登录功能，给出信息提示。
-     （2）如果登录成功，需要在每个页面
-
-     显示当期登录用户的信息。
-     （3）如果登录失败，需要在页面重新
-
-     弹出登录模态框并显示错误信息。
-     （4）无论登录成功还是失败，都能够
-
-     回到当前页面，可能是首页、视频列
-
-     表页或者视频详情页等。
-     本功能有三部分视频构成，分别是基
-
-     本功能，处理登录成功的跳转，处理
-
-     登录失败的跳转。
-     * videopath : php/3.mp4
-     * specialid : 104
-     * specialname : PHP应用开发-宋晓慧
+     * id : 125
+     * name : 嵌入式四班
+     * thumb : tcase/thumb/20180608/thumb_20180608034418_1496182103.png
+     * thumbsize : 118K
+     * description : 411
+     * ressrcid : null
+     * ressrcname : null
      * srcsc : null
      * srcscsize : null
      * donesc : null
      * donescsize : null
-     * technoid : 25
-     * technoname : PHP
-     * kcdm : drphpyykf
-     * kcmc : PHP应用开发
+     * technoid : 34
+     * technoname : 编程语言
+     * kcdm : linuxman
+     * kcmc : Linux系统管理
      * sectionid : 0
      * sectionname : null
-     * author : 宋晓慧
-     * userid : 22
-     * hits : 175
+     * specialid : 43
+     * specialname : 我的案例
+     * author : null
+     * content : &lt;p&gt;&amp;lt;p&amp;gt;&amp;amp;lt;p&amp;amp;gt;&amp;amp;amp;lt;p&amp;amp;amp;gt;&amp;amp;amp;amp;lt;p&amp;amp;amp;amp;gt;16160310411&amp;amp;amp;amp;lt;/p&amp;amp;amp;amp;gt;&amp;amp;amp;lt;/p&amp;amp;amp;gt;&amp;amp;lt;/p&amp;amp;gt;&amp;lt;/p&amp;gt;&lt;/p&gt;
+     * userid : 4113
+     * hits : 60
      * insert_time : null
-     * update_time : 2017-12-13 13:23:08
+     * update_time : 2018-06-05 15:45:18
      * check_userid : 1
      * checktime : null
      * checkstate : 1
@@ -57,9 +42,8 @@ public class VideoBean implements Serializable {
     private String thumb;
     private String thumbsize;
     private String description;
-    private String videopath;
-    private String specialid;
-    private String specialname;
+    private Object ressrcid;
+    private Object ressrcname;
     private Object srcsc;
     private Object srcscsize;
     private Object donesc;
@@ -70,7 +54,10 @@ public class VideoBean implements Serializable {
     private String kcmc;
     private String sectionid;
     private Object sectionname;
-    private String author;
+    private String specialid;
+    private String specialname;
+    private Object author;
+    private String content;
     private String userid;
     private String hits;
     private Object insert_time;
@@ -121,28 +108,20 @@ public class VideoBean implements Serializable {
         this.description = description;
     }
 
-    public String getVideopath() {
-        return videopath;
+    public Object getRessrcid() {
+        return ressrcid;
     }
 
-    public void setVideopath(String videopath) {
-        this.videopath = videopath;
+    public void setRessrcid(Object ressrcid) {
+        this.ressrcid = ressrcid;
     }
 
-    public String getSpecialid() {
-        return specialid;
+    public Object getRessrcname() {
+        return ressrcname;
     }
 
-    public void setSpecialid(String specialid) {
-        this.specialid = specialid;
-    }
-
-    public String getSpecialname() {
-        return specialname;
-    }
-
-    public void setSpecialname(String specialname) {
-        this.specialname = specialname;
+    public void setRessrcname(Object ressrcname) {
+        this.ressrcname = ressrcname;
     }
 
     public Object getSrcsc() {
@@ -225,12 +204,36 @@ public class VideoBean implements Serializable {
         this.sectionname = sectionname;
     }
 
-    public String getAuthor() {
+    public String getSpecialid() {
+        return specialid;
+    }
+
+    public void setSpecialid(String specialid) {
+        this.specialid = specialid;
+    }
+
+    public String getSpecialname() {
+        return specialname;
+    }
+
+    public void setSpecialname(String specialname) {
+        this.specialname = specialname;
+    }
+
+    public Object getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Object author) {
         this.author = author;
+    }
+
+    public String getContent() {
+        return content;
+    }
+
+    public void setContent(String content) {
+        this.content = content;
     }
 
     public String getUserid() {

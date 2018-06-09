@@ -152,7 +152,6 @@ public class ViewTwareActivity extends AppCompatActivity implements OnPageChange
         keyNoteBean =(KeyNoteBean)intent.getSerializableExtra("key_note_bean");
     }
 
-
     /**
      * 申请权限
      */
