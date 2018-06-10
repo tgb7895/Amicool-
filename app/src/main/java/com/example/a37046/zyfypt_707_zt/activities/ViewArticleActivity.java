@@ -177,7 +177,7 @@ public class ViewArticleActivity extends AppCompatActivity {
 
         concernModel=new ConcernModel();
 
-        concernModel.exist("article", articleBean.getUserid(), sessionID, mlistener);
+        concernModel.exist("userfocus", 102, sessionID, mlistener);
 
         return true;
     }
@@ -201,12 +201,12 @@ public class ViewArticleActivity extends AppCompatActivity {
                 if(flagfocus)//如果已关注，则调用取消关注
                 {
                     System.out.println("----准备取消关注");
-                    concernModel.unconcern("article", articleBean.getUserid(), sessionID, mlistener);
+                    concernModel.unconcern("userfocus", articleBean.getUserid(), sessionID, mlistener);
                 }
                 else//如果未关注，则调用关注
                 {
                     System.out.println("----准备关注");
-                    concernModel.concern("article", articleBean.getUserid(), sessionID, mlistener);
+                    concernModel.concern("userfocus", articleBean.getUserid(), sessionID, mlistener);
                 }
                 break;
             default:
