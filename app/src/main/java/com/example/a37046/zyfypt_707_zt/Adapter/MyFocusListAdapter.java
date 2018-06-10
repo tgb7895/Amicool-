@@ -1,6 +1,8 @@
 package com.example.a37046.zyfypt_707_zt.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
+import android.sax.StartElementListener;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.ContextThemeWrapper;
@@ -11,6 +13,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.a37046.zyfypt_707_zt.R;
+import com.example.a37046.zyfypt_707_zt.activities.ConcernActivity;
 import com.example.a37046.zyfypt_707_zt.bean.FocusResult;
 import com.example.a37046.zyfypt_707_zt.bean.UserBean;
 
@@ -45,7 +48,7 @@ public class MyFocusListAdapter extends RecyclerView.Adapter<MyFocusListAdapter.
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        FocusResult<UserBean> userBeanFocusResult = list.get(position);
+        final FocusResult<UserBean> userBeanFocusResult = list.get(position);
 
         holder.Tvtitle.setText(userBeanFocusResult.getBean().getUsername());
         holder.Tvauthor.setText(userBeanFocusResult.getBean().getRealname());
@@ -54,7 +57,9 @@ public class MyFocusListAdapter extends RecyclerView.Adapter<MyFocusListAdapter.
         holder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Intent intent=new Intent(mContext,ConcernActivity.class);
+                intent.putExtra("user_id",userBeanFocusResult.getBean().getId());
+                mContext.startActivity(intent);
             }
         });
     }

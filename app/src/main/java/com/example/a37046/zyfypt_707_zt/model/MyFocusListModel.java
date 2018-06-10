@@ -37,7 +37,8 @@ public class MyFocusListModel implements ListMyFocusiface{
             @Override
             public void onResponse(Call<List<FocusResult<UserBean>>> call, Response<List<FocusResult<UserBean>>> response) {
                 if(response.isSuccessful() && response!=null)
-                {  listener.onResponse(response.body());
+                {
+                    listener.onResponse(response.body());
                 }
                 else   {
                     listener.onFail("on response fail");

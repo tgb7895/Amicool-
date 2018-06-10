@@ -29,7 +29,11 @@
         <activity android:name=".activities.ViewTCaseActivity" />
         <activity android:name=".activities.ViewItemActivity" />
         <activity android:name=".activities.CollectActivity" />
-        <activity android:name=".activities.MyFocusListActivity"></activity>
+        <activity android:name=".activities.MyFocusListActivity" />
+        <activity android:name=".activities.ConcernActivity" />
+        <activity android:name=".activities.TextActivity">
+
+        </activity>
     </application>
 
 </manifest>

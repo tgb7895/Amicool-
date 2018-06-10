@@ -68,4 +68,17 @@ public class ArticleBean implements Serializable {
     public void setUpdate_time(String update_time) {
         this.update_time = update_time;
     }
+
+    @Override
+    public String toString() {
+        return "ArticleBean{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", thumb='" + thumb + '\'' +
+                ", description='" + description + '\'' +
+                ", author='" + author + '\'' +
+                ", userid=" + userid +
+                ", update_time='" + update_time + '\'' +
+                '}';
+    }
 }
