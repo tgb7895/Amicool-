@@ -3,12 +3,17 @@ package com.example.a37046.zyfypt_707_zt.activities;
 import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
+import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.example.a37046.zyfypt_707_zt.BaseFragment.BaseFragment;
 import com.example.a37046.zyfypt_707_zt.BaseFragment.BottomNavigationViewHelper;
@@ -23,6 +28,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
+    private DrawerLayout drawerLayout;
+    private NavigationView navigationViewb;
+    ImageView menu;
+
+
+
     private SharedPreferences sp;
     private String sessionID = "";
 
@@ -35,10 +46,38 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        intitc();//侧滑
         initFragmentList();//初始化FragmentList
         initViewPager();//初始化ViewPager
         initBottomNV();//初始化BottomNavigationView
     }
+
+    private void intitc() {
+        drawerLayout = (DrawerLayout) findViewById(R.id.activity_na);
+        navigationViewb = (NavigationView) findViewById(R.id.nav);
+        menu= (ImageView) findViewById(R.id.main_menu);
+        View headerView = navigationViewb.getHeaderView(0);//获取头布局
+        menu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {//点击菜单，跳出侧滑菜单
+                if (drawerLayout.isDrawerOpen(navigationViewb)){
+                    drawerLayout.closeDrawer(navigationViewb);
+                }else{
+                    drawerLayout.openDrawer(navigationViewb);
+                }
+            }
+        });
+        navigationViewb.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                //item.setChecked(true);
+                Toast.makeText(MainActivity.this,item.getTitle().toString(),Toast.LENGTH_SHORT).show();
+                drawerLayout.closeDrawer(navigationViewb);
+                return true;
+            }
+        });
+    }
+
 
     private void initFragmentList() {
         // 将fragment加载到list中

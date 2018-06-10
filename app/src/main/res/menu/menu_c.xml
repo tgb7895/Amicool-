@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group
+        android:checkableBehavior="single">
+        <item
+            android:id="@+id/favorite"
+            android:icon="@drawable/ic_blog"
+            android:checkable="true"
+            android:title="    文章"/>
+
+    </group>
+    <item
+        android:id="@+id/wallet"
+        android:icon="@drawable/ic_keynote"
+
+        android:title="    课件"/>
+    <item
+        android:id="@+id/photo"
+        android:icon="@drawable/ic_video"
+        android:title="    视频"/>
+    <item
+        android:id="@+id/dress"
+        android:icon="@drawable/ic_sample"
+        android:title="    案例"/>
+    <item
+        android:id="@+id/file"
+        android:icon="@drawable/ic_owner"
+        android:title="    个人"/>
+
+</menu>
