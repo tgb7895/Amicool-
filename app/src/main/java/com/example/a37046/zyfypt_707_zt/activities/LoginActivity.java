@@ -19,6 +19,8 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private String username = "", password = "", sessionID = "";
     private Switch sw;
     private SharedPreferences sp;
+    //创建播放视频的控件对象
+    private CustomVideoView videoview;
     private LoginListener loginListener = new LoginListener() {
         @Override
         public void onResponse(LoginBean loginBean) {
@@ -46,6 +48,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        initView();
         init();
         sp=getSharedPreferences("login",MODE_PRIVATE);
         readSP();
@@ -104,5 +107,38 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 break;
         }
     }
+
+
+
+    private void initView() {
+        //加载视频资源控件
+        videoview = (CustomVideoView) findViewById(R.id.videoview);
+        //设置播放加载路径
+        videoview.setVideoURI(android.net.Uri.parse("android.resource://" + getPackageName() + "/" + R.raw.video));
+        //播放
+        videoview.start();
+        //循环播放
+        videoview.setOnCompletionListener(new android.media.MediaPlayer.OnCompletionListener() {
+            @Override
+            public void onCompletion(android.media.MediaPlayer mediaPlayer) {
+                videoview.start();
+            }
+        });
+    }
+
+    //返回重启加载
+    @Override
+    protected void onRestart() {
+        initView();
+        super.onRestart();
+    }
+
+    //防止锁屏或者切出的时候，音乐在播放
+    @Override
+    protected void onStop() {
+        videoview.stopPlayback();
+        super.onStop();
+    }
+
 }
 
