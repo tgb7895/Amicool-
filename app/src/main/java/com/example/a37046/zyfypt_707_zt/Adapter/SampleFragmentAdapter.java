@@ -72,7 +72,8 @@ public class SampleFragmentAdapter extends RecyclerView.Adapter<SampleFragmentAd
                 //取出当前item的id
                 String id = sampleBean.getId();
                 int ids=Integer.parseInt(id);
-
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("sample",sampleBean);
                 Intent intent=null;
                 if(flag==0) {
                     intent=new Intent(context, ViewTCaseActivity.class);
@@ -81,6 +82,7 @@ public class SampleFragmentAdapter extends RecyclerView.Adapter<SampleFragmentAd
                     intent=new Intent(context, ViewItemActivity.class);
                 }
                 intent.putExtra("resid",ids);
+                intent.putExtras(bundle);
                 context.startActivity(intent);
             }
         });

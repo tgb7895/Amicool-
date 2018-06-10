@@ -74,7 +74,7 @@ public class ViewArticleActivity extends AppCompatActivity {
                 case "4":
                     System.out.println("----取消关注成功");
                     flagfocus = false;
-                    item.setTitle("收藏");
+                    item.setTitle("关注");
                     break;
                 case "3":
                     System.out.println("----取消关注失败");
@@ -177,7 +177,7 @@ public class ViewArticleActivity extends AppCompatActivity {
 
         concernModel=new ConcernModel();
 
-        concernModel.exist("userfocus", 102, sessionID, mlistener);
+        concernModel.exist("userfocus",articleBean.getUserid(), sessionID, mlistener);
 
         return true;
     }

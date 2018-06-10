@@ -46,7 +46,7 @@
                 android:inputType="textPersonName"
                 android:textColorHint="#66ffffff"
                 android:textColor="#66ffffff"
-                android:layout_margin="10dp"/>
+                android:layout_margin="10dp" />
 
             <EditText
                 android:id="@+id/editText2"

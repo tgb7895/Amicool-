@@ -22,7 +22,9 @@ import android.widget.VideoView;
 import com.example.a37046.zyfypt_707_zt.R;
 import com.example.a37046.zyfypt_707_zt.bean.VideoBean;
 import com.example.a37046.zyfypt_707_zt.iface.CollectListener;
+import com.example.a37046.zyfypt_707_zt.iface.ConcernListener;
 import com.example.a37046.zyfypt_707_zt.model.CollectModel;
+import com.example.a37046.zyfypt_707_zt.model.ConcernModel;
 import com.example.a37046.zyfypt_707_zt.model.VideoModel;
 
 public class ViewVideoActivity extends BaseActivity {
@@ -43,7 +45,58 @@ public class ViewVideoActivity extends BaseActivity {
      */
     private CollectModel collectmodel;
 
+    /**
+     * 关注标志
+     */
+    private Boolean flagfocus = false;
+    /**
+     * 关注model
+     */
+    private ConcernModel concernModel;
+    ConcernListener mlistener = new ConcernListener() {
+        @SuppressLint("RestrictedApi")
+        @Override
+        public void onResponse(String msg) {
+            //获取菜单视图
+            ActionMenuItemView item = findViewById(R.id.menufocus);
+            //根据mode中response返回的字符串区分返回结果
+            switch (msg) {
+                case "2":
+                    System.out.println("----关注成功");
+                    flagfocus = true;
+                    item.setTitle("取消关注");
+                    break;
+                case "1":
+                    System.out.println("----关注失败");
+                    break;
+                case "4":
+                    System.out.println("----取消关注成功");
+                    flagfocus = false;
+                    item.setTitle("关注");
+                    break;
+                case "3":
+                    System.out.println("----取消关注失败");
+                    break;
+                case "5":
+                    System.out.println("----已关注");
+                    flagfocus = true;
+                    item.setTitle("取消关注");
+                    break;
+                case "6":
+                    System.out.println("----未关注");
+                    flagfocus = false;
+                    item.setTitle("关注");
+                    break;
+                default:
+                    Toast.makeText(ViewVideoActivity.this, msg, Toast.LENGTH_SHORT).show();
+            }
+        }
 
+        @Override
+        public void onFail(String msg) {
+            Toast.makeText(ViewVideoActivity.this, msg, Toast.LENGTH_SHORT).show();
+        }
+    };
     CollectListener listener = new CollectListener() {
         @SuppressLint("RestrictedApi")
         @Override
@@ -122,6 +175,9 @@ public class ViewVideoActivity extends BaseActivity {
         collectmodel = new CollectModel();
         //判断是否收藏
         collectmodel.exist("video", resid, getSessionId(), listener);
+        concernModel=new ConcernModel();
+
+        concernModel.exist("userfocus",Integer.parseInt(videoBean.getUserid()), getSessionId(), mlistener);
 
 
         return true;
@@ -142,16 +198,16 @@ public class ViewVideoActivity extends BaseActivity {
                 }
                 break;
             case R.id.menufocus:
-//                if(flagfocus)//如果已关注，则调用取消关注
-//                {
-//                    System.out.println("----准备取消关注");
-//                    concernModel.unconcern("article", articleBean.getUserid(), sessionID, mlistener);
-//                }
-//                else//如果未关注，则调用关注
-//                {
-//                    System.out.println("----准备关注");
-//                    concernModel.concern("article", articleBean.getUserid(), sessionID, mlistener);
-//                }
+                if(flagfocus)//如果已关注，则调用取消关注
+                {
+                    System.out.println("----准备取消关注");
+                    concernModel.unconcern("userfocus", Integer.parseInt(videoBean.getUserid()), getSessionId(), mlistener);
+                }
+                else//如果未关注，则调用关注
+                {
+                    System.out.println("----准备关注");
+                    concernModel.concern("userfocus", Integer.parseInt(videoBean.getUserid()),  getSessionId(), mlistener);
+                }
                 break;
             default:
                 break;
