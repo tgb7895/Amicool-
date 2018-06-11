@@ -2,6 +2,7 @@ package com.example.a37046.zyfypt_707_zt.Adapter.concern;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -91,6 +92,9 @@ public class FSampleAdapter extends RecyclerView.Adapter {
                 }
 
                 int i = Integer.parseInt(sampleBean.getId());
+                Bundle bundle=new Bundle();
+                bundle.putSerializable("sample",sampleBean);
+                intent.putExtras(bundle);
                 intent.putExtra("resid", i);
                 context.startActivity(intent);
             }
