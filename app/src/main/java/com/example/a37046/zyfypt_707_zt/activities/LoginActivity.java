@@ -14,6 +14,24 @@ import com.example.a37046.zyfypt_707_zt.bean.LoginBean;
 import com.example.a37046.zyfypt_707_zt.iface.LoginListener;
 import com.example.a37046.zyfypt_707_zt.model.LoginModel;
 
+//┏┓　　　┏┓
+//┏┛┻━━━┛┻┓
+//┃　　　　　　　┃ 　
+//┃　　　━　　　┃
+//┃　┳┛　┗┳　┃
+//┃　　　　　　　┃
+//┃　　　┻　　　┃
+//┃　　　　　　　┃
+//┗━┓　　　┏━┛
+//  ┃　　　┃   神兽保佑　　　　　　　　
+//  ┃　　　┃   代码无BUG！
+//  ┃　　　┗━━━┓
+//  ┃　　　　　　　┣┓
+//  ┃　　　　　　　┏┛
+//  ┗┓┓┏━┳┓┏┛
+//    ┃┫┫　┃┫┫
+//    ┗┻┛　┗┻┛
+
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
     private EditText etuser, etpass;
     private String username = "", password = "", sessionID = "";

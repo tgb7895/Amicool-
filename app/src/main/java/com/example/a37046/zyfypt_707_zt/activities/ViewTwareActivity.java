@@ -247,7 +247,15 @@ public class ViewTwareActivity extends AppCompatActivity implements OnPageChange
     }
 
     private void downloadfile() {
-        String downloadUrl = "/Uploads/"+attach;    //补全pdf文件相对地址
+        String downloadUrl;
+        if(attach!=null) {
+            //补全pdf文件相对地址
+            downloadUrl = "/Uploads/"+attach;
+        }else{
+            downloadUrl="";
+            Toast.makeText(ViewTwareActivity.this, "api接口数据不符合要求", Toast.LENGTH_SHORT).show();
+        }
+
         //定义Retrofit
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(BASEURL)
