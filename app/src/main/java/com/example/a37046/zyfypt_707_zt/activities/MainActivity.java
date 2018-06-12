@@ -27,6 +27,24 @@ import com.example.a37046.zyfypt_707_zt.fragments.VideoFragment;
 import java.util.ArrayList;
 import java.util.List;
 
+//┏┓　　　┏┓
+//┏┛┻━━━┛┻┓
+//┃　　　　　　　┃ 　
+//┃　　　━　　　┃
+//┃　┳┛　┗┳　┃
+//┃　　　　　　　┃
+//┃　　　┻　　　┃
+//┃　　　　　　　┃
+//┗━┓　　　┏━┛
+//  ┃　　　┃   神兽保佑　　　　　　　　
+//  ┃　　　┃   代码无BUG！
+//  ┃　　　┗━━━┓
+//  ┃　　　　　　　┣┓
+//  ┃　　　　　　　┏┛
+//  ┗┓┓┏━┳┓┏┛
+//    ┃┫┫　┃┫┫
+//    ┗┻┛　┗┻┛
+
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerLayout;
     private NavigationView navigationViewb;
